@@ -147,6 +147,35 @@ def euclid_gcd(a: int, b: int) -> int:
     #     a, b = b, a % b
     # return a
 
+########################################
+# Homework: https://cogniterra.org/lesson/29831/step/1?unit=21910
+########################################
+
+# Insert your sum_two_ints() function here.
+def sum_two_ints(a: int, b: int) -> int:
+    """
+    Return the sum of two integers.
+    Args:
+        a: (int).
+        b: (int).
+    Returns:
+        The integer sum of a and b.
+    """
+    return a + b
+
+# Insert your double_and_duplicate() function here.
+def double_and_duplicate(x: float) -> tuple[float, float]:
+    """
+    Double the input variable and return two copies of it.
+
+    Parameters:
+    - x (float): an input float
+
+    Returns:
+    tuple[float, float]: Two copies of 2 * x.
+    """
+    return x * 2, x * 2
+
 if __name__ == "__main__":
     main() # function call to main function
 

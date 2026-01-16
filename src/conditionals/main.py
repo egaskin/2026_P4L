@@ -1,4 +1,12 @@
-
+# index of conditional (boolean) functions
+# < : less than
+# > : greater than
+# <= : less than or equal to
+# >= : greater than or equal to
+# == : equal to
+# != : not equal to
+# in : membership test
+# not in : negated membership test
 
 # Insert your min_2() function here.
 def min_2(a: int, b: int) -> int:
@@ -36,16 +44,32 @@ def which_is_greater(x: int, y: int) -> int:
 def same_sign(x: int, y: int) -> bool:
     """
     Takes two integers as input and returns True if they have the same sign, and False if they have different signs. Note: we assume that
-    zero has a POSITIVE sign (rather than being unsigned)
+    zero is both positively and negatively sign (rather than being unsigned)
     Parameters:
     - x (int): first integer
     - y (int): second integer
     Returns:
     bool: True if x and y have the same sign, False otherwise
     """
-    if (x * y) > 0:
-        return True
-    return False
+    # # version 1, naive
+    # if (x >= 0 and y >= 0) or (x < 0 and y < 0):
+    #     return True
+    # else:
+    #     return False
+
+    # # version 2, using multiplication
+    # if (x * y) >= 0:
+    #     return True
+    # else:
+    #   return False
+
+    # # version 3, using multiplication and no else
+    # if (x * y) >= 0:
+    #     return True
+    # return False # if we make it here, then the function didnt return True
+
+    # version 4, using multiplication and returning the boolean expression directly
+    return (x * y) >= 0
 
     # Insert your positive_difference() function here.
 def positive_difference(a: int, b: int) -> int:
@@ -58,6 +82,22 @@ def positive_difference(a: int, b: int) -> int:
     int: positive difference of a and b
     """
     return abs(a - b)
+
+def main():
+    print("Conditionals module begins here!")
+    x = 5
+    y = 10  
+    print(f"Testing min_2(x,y) = min_2({x},{y}) = {min_2(x,y)}")
+    # print(min_2(x, y))
+
+    print(f"Testing which_is_greater(x,y) = which_is_greater({x},{y}) = {which_is_greater(x,y)}")
+    # print(which_is_greater(x, y))
+
+    print(f"Testing same_sign(x,y) = same_sign({x},{y}) = {same_sign(x,y)}")
+    # print(same_sign(x, y))
+
+    print(f"Testing positive_difference(x,y) = positive_difference({x},{y}) = {positive_difference(x,y)}")
+    # print(positive_difference(x, y))
 
 if __name__ == "__main__":
     main()

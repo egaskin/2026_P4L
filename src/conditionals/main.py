@@ -7,6 +7,15 @@
 # != : not equal to
 # in : membership test
 # not in : negated membership test
+# and: logical AND, short circuits so if first operand is False, second is not evaluated
+# or: logical OR, short circuits so if first operand is True, second is not evaluated
+# xor: logical XOR, True if exactly one operand is True, False otherwise
+    # truth table:
+    # A     B      A and B   A or B   A xor B
+    # True  True   True      True     False
+    # True  False  False     True     True
+    # False True   False     True     True
+    # False False  False     False    False
 
 # Insert your min_2() function here.
 def min_2(a: int, b: int) -> int:

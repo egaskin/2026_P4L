@@ -70,7 +70,7 @@ x + y = n
 {x} + {y} = {n}""")
     
     # what if i do not pass integers?
-    n = sum_two_ints_v2(3.5, 2.1)  # this will work, but is not type safe
+    n = sum_two_ints_v2(3.5, 2.1)  # type: ignore # this will work, but is not type safe
     print(f"""\nSum of 3.5 and 2.1 using version 2:
 3.5 + 2.1 = n
 3.5 + 2.1 = {n}
@@ -132,21 +132,6 @@ def add_one(k: int) -> int:
     return k
     # k gets modified here, but this does not affect the variable passed in
 
-def euclid_gcd(a: int, b: int) -> int:
-    """
-    Computes the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
-
-    Parameters:
-    - a (int): The first integer.
-    - b (int): The second integer.
-
-    Returns:
-    - int: The GCD of the two integers.
-    """
-    # while b != 0:
-    #     a, b = b, a % b
-    # return a
-
 ########################################
 # Homework: https://cogniterra.org/lesson/29831/step/1?unit=21910
 ########################################
@@ -162,19 +147,6 @@ def sum_two_ints(a: int, b: int) -> int:
         The integer sum of a and b.
     """
     return a + b
-
-# Insert your double_and_duplicate() function here.
-def double_and_duplicate(x: float) -> tuple[float, float]:
-    """
-    Double the input variable and return two copies of it.
-
-    Parameters:
-    - x (float): an input float
-
-    Returns:
-    tuple[float, float]: Two copies of 2 * x.
-    """
-    return x * 2, x * 2
 
 if __name__ == "__main__":
     main() # function call to main function

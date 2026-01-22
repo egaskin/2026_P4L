@@ -42,7 +42,7 @@ type of statement = {type(statement)}""")
     
     # if we're not sure something will work, a try except block can help us catch errors (good practice to specify the type of error catching)
     try:
-        print(2(j + 5))  # this will raise an error
+        print(2(j + 5))  # type: ignore # this will raise an error
     except TypeError as e: # could be just "except:" to catch all errors, but it's better to be specific
         print(f"\nCaught an error for code 2(j + 5): {e}")
 

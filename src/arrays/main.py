@@ -1,3 +1,5 @@
+import math
+
 def main():
     print("Arrays module (tuples, lists, sets) begins here!")
     print("Dicts are next!")
@@ -19,7 +21,7 @@ def main():
     print(f"point_3d[2] = {point_3d[2]}")  # z coordinate
 
     try:
-        point[0] = 10  # this will raise an error because tuples are immutable
+        point[0] = 10  # type: ignore # this will raise an error because tuples are immutable
     except TypeError as e:
         print(f"Error: {e}")
 
@@ -173,6 +175,132 @@ def change_first_element_list(a: list[int]) -> None:
     a[0] = 42  # change first element to 42
     return None  # optional, since functions return None by default if no return statement
 
+# Insert your is_prime() function here, along with any subroutines that you need.
+def is_prime(p: int) -> bool:
+    """
+    Determine whether an integer is prime.
+    Test if p is prime.
+    Parameters:
+    - p (int): an integer
+    Returns:
+    bool: True if p is prime and False otherwise.
+    """
+
+    if p == 0 or p == 1:
+        return False
+
+    # isqrt is integer square root
+    for i in range(2, math.isqrt(p) + 1):
+        if p % i == 0:
+            return False
+    return True
+
+# Insert your trivial_prime_finder() function here, along with any subroutines that you need.
+"""
+Pseudocode:
+
+TrivialPrimeFinder(n)
+    primeBooleans ← array of n + 1 false boolean variables
+    for every integer p from 2 to n
+        if IsPrime(p) is true
+            primeBooleans[p] ← true
+    return primeBooleans
+"""
+def trivial_prime_finder(n: int) -> list[bool]:
+    """
+    Returns a list of boolean variables storing the primality of each nonnegative integer up to and including n.
+    Parameters:
+    - n (int): an integer
+    Returns:
+    list (bool): a list of boolean variables storing the primality of each nonnegative integer up to and including n.
+    """
+
+    prime_booleans = [False] * (n + 1)
+
+    for i in range(2, n + 1):
+        if is_prime(i):
+            prime_booleans[i] = True
+
+    return prime_booleans
+
+# Insert your cross_off_multiples() function here, along with any subroutines that you need.
+def cross_off_multiples(prime_booleans: list[bool], p:int) -> list[bool]:
+    """
+    Returns an updated list in which all variables in the array whose indices are multiples of p         (greater than p) have been set to false.
+    Parameters:
+    - prime_booleans (list): a list of boolean variables storing the primality of each nonnegative         integer
+    - p (int): an integer
+    Returns:
+    list (bool): a list of boolean variables storing the primality of each nonnegative integer up to                 and including n with multiples of p (greater than p) set to false.
+    """
+    
+    # n = len(prime_booleans) - 1
+    # for i in range(2*p, n + 1, p):
+    #   prime_booleans[i] = False
+
+    print(f"p = {p}")
+    # len(prime_booleans) is n + 1, we want [0,n] inclusive s
+    for i in range(2*p, len(prime_booleans), p):
+        print(f"    for p = {p}, i = {i} is set to False")
+        prime_booleans[i] = False
+    
+    return prime_booleans
+
+"""
+Pseudocode:
+SieveOfEratosthenes(n)
+    primeBooleans ← array of n + 1 true boolean variables
+    primeBooleans[0] ← false
+    primeBooleans[1] ← false
+    for every integer p between 2 and √n
+        if primeBooleans[p] = true
+            primeBooleans ← CrossOffMultiples(primeBooleans,p)
+    return primeBooleans
+"""
+
+# Insert your sieve_of_eratosthenes() function here, along with any subroutines that you need.
+def sieve_of_eratosthenes(n: int) -> list[bool]:
+    """
+    Returns a list of boolean variables storing the primality of each nonnegative integer up to and including n,
+    implementing the "sieve of Eratosthenes" algorithm.
+    Parameters:
+    - n (int): an integer
+    Returns:
+    list (bool): a list of boolean variables storing the primality of each nonnegative integer up to and including n.
+    """
+    prime_booleans = [True] * (n + 1)
+    prime_booleans[0], prime_booleans[1] = False, False
+    for p in range(2, math.isqrt(n) + 1):
+        if prime_booleans[p] == True:
+            prime_booleans = cross_off_multiples(prime_booleans = prime_booleans, p = p)
+
+    return prime_booleans
+
+# Hint: insert your cross_off_multiples() function here
+
+# Insert your list_primes() function here, along with any subroutines that you need.
+def list_primes(n: int) -> list[int]:
+    """
+    List all prime numbers up to and (possibly) including n.
+    Parameters:
+    - n (int): an integer
+    Returns:
+    list (int): a list containing all prime numbers up to and (possibly) including n.
+    """
+    
+    prime_booleans = sieve_of_eratosthenes(n = n)
+
+    primes_list = []
+
+    for i in range(2, n + 1):
+        if prime_booleans[i]:
+            primes_list.append(i)
+
+    return primes_list
+
+# Hint: insert your sieve_of_eratosthenes() and cross_off_multiples functions here
+
+
 if __name__ == "__main__":
     main()
 
@@ -193,3 +321,7 @@ if __name__ == "__main__":
     # because lists are mutable, so when we pass them to functions, the function can modify
     # the original list. with integers and strings, the function gets a copy of the value,
     # so modifying it inside the function does not affect the original variable
+
+    print(f"sieve_of_eratosthenes({10}) = {sieve_of_eratosthenes(10)}")
+
+    print(f"all primes between 1 and 100: {list_primes(100)}")

@@ -319,7 +319,7 @@ def list_primes(n: int) -> list[int]:
 
 # Hint: insert your sieve_of_eratosthenes() and cross_off_multiples functions here
 
-def compare_funcs(n: int) -> bool:
+def compare_funcs(n: int) -> float:
     """
     Docstring for compare_funcs
     
@@ -435,7 +435,7 @@ if __name__ == "__main__":
     test_inputs = [10**i for i in range(1,7)]
     # raise Exception(f"test_inputs = {test_inputs}")
     print(f"test_inputs = {test_inputs}")
-    speedup_vals = [None]*len(test_inputs)
+    speedup_vals = [-1.0]*len(test_inputs)
     for i, test_input in enumerate(test_inputs):
         speedup = compare_funcs(test_input)
         speedup_vals[i] = speedup

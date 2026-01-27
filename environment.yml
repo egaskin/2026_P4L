@@ -1,0 +1,8 @@
+name: 2026_P4L
+channels:
+  - defaults
+dependencies:
+  - python=3.14
+  - numpy
+  - matplotlib
+  - pandas

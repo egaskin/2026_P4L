@@ -46,6 +46,9 @@ def main():
     except ValueError as e:
         print(e)
 
+    test_rev = "ABCDE"
+    print(f"testing reverse:\n{test_rev}\n{reverse(test_rev)}")
+
 
 # Write your reverse_complement() function here, along with any subroutines that you need.
 def reverse_complement(dna: str) -> str:
@@ -101,7 +104,7 @@ def complement(dna: str) -> str:
     return new_dna
 
 # Write your reverse() function here.
-def reverse(s: str) -> str:
+def reverse(s: str) -> str: # type: ignore
     """
     Reverse a string.
 
@@ -147,26 +150,43 @@ def reverse(s: str) -> str:
     #     characters.append(s[(n - 1) - i])
     # return "".join(characters)
 
-    # v6
-    # better "general" programmer way for speed, preallocate an array and access each element once
-    n = len(s)
-    characters = [""]*n
-    for i in range(n):
-        characters[(n - 1) - i] = s[(n - 1) - i]
-    return "".join(characters)
+    # # v6 - linear memory, linear runtime (2n memory)
+    # # better "general" programmer way for speed, preallocate an array and access each element once
+    # n = len(s)
+    # characters = [""]*n
+    # for i in range(n):
+    #     characters[(n - 1) - i] = s[(n - 1) - i]
+    # return "".join(characters)
 
-    # v7
-    # somewhat better "general" programmer way for speed and def better for memory 
+    # v7 - linear memory, linear runtime (1n memory)
+    # somewhat better "general" programmer way for speed and def better for memory
+    # split the existing string to a list in place (assign to s), then range over that
+    # list and switch 
+    # "ABCDE", n = 5
+    # i         i_switch
+    # 0         4 = (n - 1) - i
+    # 1         3 = (n - 1) - i
+    # 2         2 = (n - 1) - i
+
+    # "ABCD", n = 4
+    # i         i_switch
+    # 0         3 = (n - 1) - i
+    # 1         2 = (n - 1) - i
+    # 2         1 = (n - 1) - i
     # (but not faster than v6 since we preprocess the string into a list) 
-    s = s.split("")
+    s: list[str] = list(s)
+    n = len(s)
 
-    # range through the list and switch the i with its correspondant
-    # i         switch_i
-    # 0         n - 1
-    # 1         n - 2
-    # 2         n - 3
-    # ...
-    # n//2      0
+    for i in range(0, n//2):
+        i_switch = n - i - 1
+        # print(i, i_switch)
+        if i >= i_switch:
+            break
+        tmp = s[i]
+        s[i] = s[i_switch]
+        s[i_switch] = tmp
+
+    return "".join(s)
 
 if __name__ == "__main__":
     main()

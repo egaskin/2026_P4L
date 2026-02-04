@@ -92,9 +92,12 @@ x + y = n
     print(f"value of m is after add_one: m = {m}")
     # add_one does not modify the input variable!!!
 
-    # with basic types (str, int, float, bool), python uses "pass by value" semantics
+    # with basic types (str, int, float, bool), python uses something like "pass by value" semantics
     # this means that when you pass a variable to a function, the function gets a copy of the value
-    # "pass by reference" semantics would mean that the function gets access to the original variable and can modify it. Python uses "pass by reference" for complex types (lists, dictionaries) and custom objects
+    # "pass by reference" semantics would mean that the function gets access to the original variable and can modify it. 
+    # Python uses something like "pass by reference" for complex types (lists, dictionaries) and custom objects
+    # python actually uses "call by object reference", see the following chatgpt conversation:
+    # https://chatgpt.com/share/697c047b-3bc0-800d-a18a-976b7e794652
 
     test_dict = {"a": 1, "b": 2}
     print(f"\nOriginal test_dict before passing to function: {test_dict} (id: {id(test_dict)})")

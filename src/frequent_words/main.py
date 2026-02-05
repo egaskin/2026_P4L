@@ -6,9 +6,9 @@ def main() -> None:
     k = 3
     print(f"frequency_table(text, k) = frequency_table({text}, {k}) = {frequency_table(text, k)}")
 
-    print(f"frequent_words(text, k) = frequent_words({text}, {k}) = {frequent_words(text, k)}")
+    print(f"find_frequent_words(text, k) = find_frequent_words({text}, {k}) = {find_frequent_words(text, k)}")
 
-def frequent_words(text:str, k:int) -> list[str]:
+def find_frequent_words(text:str, k:int) -> list[str]:
     """
     Produces all frequent k-mers (substring of length k) in a longer string.
 

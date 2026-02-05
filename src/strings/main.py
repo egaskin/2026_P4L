@@ -188,6 +188,38 @@ def reverse(s: str) -> str: # type: ignore
 
     return "".join(s)
 
+# Insert your starting_indices() function here.
+def starting_indices(pattern: str, text: str) -> list[int]:
+    """
+    starting_indices returns the list containing all the starting positions of pattern in text.
+    Parameters:
+    - pattern (str): A given substring.
+    - text (str): A given superstring.
+    Returns:
+    - list[int]: A list containing the starting positions of pattern in text (indices).
+    """
+    found_indices = []
+    n = len(text)
+    k = len(pattern)
+    for i in range(0, n - k + 1):
+        cur_window = text[i:i+k]
+        if cur_window == pattern:
+            found_indices.append(i)
+
+    return found_indices
+
+# Write your pattern_count() function here, along with any subroutines that you need.
+def pattern_count(pattern: str, text: str) -> int:
+    """
+    pattern_count finds the number of times the substring occurs in a given text string.
+    Parameters:
+    - pattern (str): The substring we are searching for in text.
+    - text (str): The parent text string we are searching against.
+    Returns:
+    - int: The number of times that pattern occurs in text, including overlaps.
+    """
+    return len(starting_indices(text = text, pattern = pattern))
+
 if __name__ == "__main__":
     main()
     

@@ -1,0 +1,22 @@
+Simulating an election!
+Files read successfully!
+v1 Simulation of early polls complete for num_trials = 1000000, margin_of_error = 0.05
+Probability of candidate 1 winning: 0.998828
+Probability of candidate 2 winning: 0.000993
+Probability of tie: 0.000179
+------
+v2 Simulation of early polls complete for num_trials = 1000000, margin_of_error = 0.1
+Probability of candidate 1 winning: 0.986778
+Probability of candidate 2 winning: 0.012188
+Probability of tie: 0.001034
+------
+v3 Simulation after convention (later time) complete for num_trials = 1000000, margin_of_error = 0.05
+Probability of candidate 1 winning: 0.999866
+Probability of candidate 2 winning: 0.000106
+Probability of tie: 2.8e-05
+------
+v4 Simulation after debates (latest time) complete for num_trials = 1000000, margin_of_error = 0.05
+Probability of candidate 1 winning: 0.999996
+Probability of candidate 2 winning: 4e-06
+Probability of tie: 0.0
+------

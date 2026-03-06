@@ -20,6 +20,9 @@ def main():
     cell_width = int(sys.argv[3])
     num_gens = int(sys.argv[4])
 
+    if output_prefix[-1] != "/":
+        output_prefix += "/"
+
     print(f"Input CSV: {input_csv}")
     print(f"Output Prefix: {output_prefix}")
     print(f"Cell Width: {cell_width}")
@@ -34,13 +37,14 @@ def main():
     intial_surface = draw_game_board(initial_board, white, dark_gray, cell_width)  # Draw the initial board
     path = f"{output_prefix}"
     os.makedirs(path, exist_ok=True)
-    pygame.image.save(intial_surface, f"{path}dinnerTable0.png")  # Save the initial board image
+    output_name = output_prefix.split("/")[-2]
+    pygame.image.save(intial_surface, f"{path}{output_name}0.png")  # Save the initial board image
     automaton_boards = play_game_of_life(initial_board, num_gens)  # Get the boards for each generation
     print("We played the game of life successfully. Drawing now...")
     surfaces = draw_game_boards(automaton_boards, white, dark_gray, cell_width)
     
     print("Boards drawn! Animating the Game of Life now...")
-    animate_surfaces(surfaces, video_path = f"{output_prefix}dinnerTable.mp4")
+    animate_surfaces(surfaces, video_path = f"{output_prefix}{output_name}.mp4")
     pygame.quit()  # Quit pygame when done
 
     print("Animation finished! Exiting normally.")

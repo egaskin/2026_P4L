@@ -1,0 +1,20 @@
+Gravity Sand (von Neumann + diagonals for sliding, 3 states)
+States:
+0 empty
+1 sand (falls)
+2 rock (immovable obstacle)
+
+Update (simultaneous; apply in this priority):
+1) Falling:
+- If C==1 and cell below (B) is 0: sand moves down (next for current becomes 0; below becomes 1)
+2) Sliding:
+- If C==1 and B is not 0:
+    - If down-left is 0: slide down-left
+    - Else if down-right is 0: slide down-right
+    - Else stay
+3) Rock:
+- If C==2: stays 2
+4) Empty:
+- stays 0 unless receiving sand from above/diagonal.
+
+This makes dunes, avalanches, and pile dynamics.

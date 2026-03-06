@@ -1,8 +1,17 @@
 name: 2026_P4L
 channels:
+  - conda-forge
   - defaults
+
 dependencies:
-  - python=3.14
+  - python=3.12
   - numpy
   - matplotlib
   - pandas
+  - pygame
+  - imageio
+  - ffmpeg
+  - pip
+
+  - pip:
+      - imageio-ffmpeg # may need to install manually with "pip install imageio-ffmpeg"

@@ -1,0 +1,5 @@
+HW2, output being saved to file output.txt in the hw2 folder
+exercise_6_4_5() = 9999
+-------
+m = 16384
+exercise_6_5_2() = 16384
